@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+/* Fonts */
+@import 'theme/fonts.scss';
+
+/* Tailwind */
+@import 'theme/tailwind.scss';
+
+/* Reset */
+html, body { height: 100%; }
+body { margin: 0; }
