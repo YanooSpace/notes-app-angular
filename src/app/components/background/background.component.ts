@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-write',
+  selector: 'app-background',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './write.component.html',
-  styleUrls: ['./write.component.scss']
+  templateUrl: './background.component.html',
+  styleUrls: ['./background.component.scss']
 })
-export class WriteComponent {
+export class BackgroundComponent {
 
 }
