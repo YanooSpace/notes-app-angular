@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet, RouterLink } from '@angular/router';
+import { RouterOutlet, RouterLinkWithHref,  } from '@angular/router';
 import { ListComponent } from "../list/list.component";
 import { WriteComponent } from './write/write.component';
 import { BackgroundComponent } from 'src/app/components/background/background.component';
@@ -15,7 +15,7 @@ import { ScheduleService } from 'src/app/services/schedule.service';
     templateUrl: './home.component.html',
     imports: [CommonModule, 
         RouterOutlet,
-        RouterLink,
+        RouterLinkWithHref,
         ListComponent, 
         WriteComponent, 
         BackgroundComponent,
@@ -31,7 +31,9 @@ export class HomeComponent {
 
     constructor(
         public scheduleService: ScheduleService
-    ) {
+    ) {}
 
+    onCreate() {
+        console.log('test')
     }
 }

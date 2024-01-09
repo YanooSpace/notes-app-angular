@@ -1,0 +1,33 @@
+<app-notes-bg>
+    <div class="flex justify-start">
+        <app-button routerLink="/home">back</app-button>
+    </div>
+    <div class="flex flex-col gap-3">
+        <div class="bg-white rounded-md p-2">{{ title }}</div>
+            <div class="bg-white rounded-md p-2 min-h-[10rem]">
+                {{ contents }}
+            </div>
+            <div class="flex gap-2 justify-end">
+                <app-button>수정</app-button>
+            </div>
+        
+        <!-- <ng-container *ngIf="!editMode; else onEditMode" >
+            <div class="rounded-md p-2">{{ scheduleService.schedules[0].title }}</div>
+            <div class="rounde-md p-2 min-h-[10rem]">
+                {{ scheduleService.schedules[0].text }}
+            </div>
+            <div class="flex gap-2 justify-end">
+                <app-button>수정</app-button>
+            </div>
+        </ng-container>
+
+        <ng-template #onEditMode>
+            <input type="text" class="resize-none rounded-md p-2">
+            <textarea class="resize-none rounded-md h-[10rem]"></textarea>
+            <div class="flex gap-2 justify-end">
+                <app-button>완료</app-button>
+            </div>
+        </ng-template> -->
+
+    </div>
+</app-notes-bg>

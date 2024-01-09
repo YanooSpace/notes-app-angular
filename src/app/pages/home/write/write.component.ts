@@ -22,4 +22,8 @@ export class WriteComponent {
   constructor(
     public scheduleService: ScheduleService
   ) {}
+
+  onCreate() {
+    console.log('test')
+  }
 }
