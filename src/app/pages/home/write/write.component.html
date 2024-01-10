@@ -3,8 +3,8 @@
         <app-button routerLink="/home">back</app-button>
     </div>
     <div class="flex flex-col gap-3">
-        <input type="text" class="resize-none rounded-md p-2">
-        <textarea class="resize-none rounded-md h-[10rem]"></textarea>
+        <input type="text" [(ngModel)]="schedule.title" class="resize-none rounded-md p-2">
+        <textarea [(ngModel)]="schedule.contents" class="resize-none rounded-md h-[10rem]"></textarea>
         <div class="flex gap-2 justify-end">
             <app-button (click)="onCreate()">생성</app-button>
         </div>
