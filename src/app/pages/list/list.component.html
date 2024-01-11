@@ -1,5 +1,6 @@
 <div class="flex flex-col gap-3">
-    <div *ngFor="let schedule of schedules$ | async" (click)="show()" class="w-full p-3 bg-white rounded-lg">
+    <!-- path parameter로 schedule.id를 전달, app.routes.ts에서도 설정 해야함  -->
+    <div *ngFor="let schedule of schedules$ | async; let i = index" [routerLink]="['/detail', schedule.id]" class="w-full p-3 bg-white rounded-lg">
         <div class="text-[1.3rem] font-semibold">{{ schedule.title }}</div>
         <div>{{ schedule.contents }}</div>
     </div>

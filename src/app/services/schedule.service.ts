@@ -47,6 +47,18 @@ export class ScheduleService {
   }
 
   /**
+   * 
+   * @param scheduleId index는 0부터 시작하기 때문에 id값에(1부터시작) -1 해준다 
+   */
+  getSelectedSchedule(scheduleId: number) {
+    const selecteSchedule = this.schedules$.getValue()[scheduleId - 1]
+    if (!selecteSchedule) {
+      console.error(`${scheduleId} 못찾았어`)
+    }
+    return selecteSchedule;
+  }
+
+  /**
    * next([])
    */
   addSchedule(schedule: AddSchedule) {
@@ -80,6 +92,5 @@ export class ScheduleService {
       this.schedules$.next(this.schedules$.value);
     }
   }
-
 }
 
