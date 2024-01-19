@@ -5,19 +5,19 @@
     <!-- *ngFor="let schedule of schedules$ | async; let i = index" -->
     <div class="flex flex-col gap-3">
         <ng-container *ngIf="!editMode else onEditMode">
-            <div class="bg-white rounded-md p-2">{{ selectedSchedule.title }}</div>
+            <div class="bg-white rounded-md p-2">{{ schedule.title }}</div>
             <div class="bg-white rounded-md p-2 min-h-[10rem]">
-              {{ selectedSchedule.contents }}
+              {{ schedule.contents }}
             </div>
             <div class="flex gap-2 justify-end">
-                <app-button onclick="onEdit(selectedSchedule)">수정</app-button>
+                <app-button (click)="onEdit()">수정</app-button>
             </div>
         </ng-container>
         <ng-template #onEditMode>
-            <input type="text" class="resize-none rounded-md p-2">
-            <textarea class="resize-none rounded-md h-[10rem]"></textarea>
+            <input id="inputTitle" type="text" class="resize-none rounded-md p-2" [(ngModel)]="schedule.title">
+            <textarea class="resize-none rounded-md h-[10rem] p-2" [(ngModel)]="schedule.contents"></textarea>
             <div class="flex gap-2 justify-end">
-                <app-button onclick="saveEdit()">완료</app-button>
+                <app-button (click)="saveEdit()">완료</app-button>
             </div>
         </ng-template>
     </div>

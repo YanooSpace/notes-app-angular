@@ -25,7 +25,7 @@ export class WriteComponent {
     title: '',
     contents: '',
     createDate: '',
-    createtime: ''
+    createTime: ''
   }
 
   /**
@@ -47,7 +47,7 @@ export class WriteComponent {
       title: '',
       contents: '',
       createDate: '',
-      createtime: ''
+      createTime: ''
     }
   }
 
@@ -55,7 +55,7 @@ export class WriteComponent {
     console.log('test')
     // id를 제외한 나머지 : 구조분해할당
     // ...rest : 나머지
-    const { id, createDate, createtime, ...rest } = this.schedule;
+    const { id, createDate, createTime: createtime, ...rest } = this.schedule;
     this.scheduleService.addSchedule(rest);
 
     // 필드 초기화 

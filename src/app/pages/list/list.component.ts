@@ -19,7 +19,7 @@ export class ListComponent {
     title: '',
     contents: '',
     createDate: '',
-    createtime: ''
+    createTime: ''
   }
 
   constructor(

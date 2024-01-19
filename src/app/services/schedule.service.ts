@@ -6,10 +6,11 @@ export interface Schedule {
   title: string;
   contents: string;
   createDate: string;
-  createtime: string
+  createTime: string
 }
 
-export type AddSchedule = Omit<Schedule, 'id'|'createDate'| 'createtime' >;
+export type AddSchedule = Omit<Schedule, 'id' | 'createDate' | 'createTime'>;
+export type UpdateSchedule = Partial<Omit<Schedule, 'id' | 'createDate' | 'createTime'>>
 
 @Injectable({
   providedIn: 'root'
@@ -18,25 +19,25 @@ export class ScheduleService {
 
   private schedules$ = new BehaviorSubject<Schedule[]>([
     {
-      id: 1,
+      id: 4,
       title: '노트앱',
       contents: '노트앱 만들기',
       createDate: 'yyyy-mm-dd',
-      createtime: 'yyyy-mm-dd',
+      createTime: 'yyyy-mm-dd',
     },
     {
-      id: 2,
+      id: 5,
       title: '영화리스트 앱',
       contents: '영화 목록 생성 및 리스트 불러오기',
       createDate: 'yyyy-mm-dd',
-      createtime: 'yyyy-mm-dd',
+      createTime: 'yyyy-mm-dd',
     },
     {
-      id: 3,
+      id: 6,
       title: '계산기 앱',
       contents: '간단한 계산기 앱',
       createDate: 'yyyy-mm-dd',
-      createtime: 'yyyy-mm-dd',
+      createTime: 'yyyy-mm-dd',
     },
   ]);
 
@@ -47,25 +48,20 @@ export class ScheduleService {
   }
 
   /**
-   * 
    * @param scheduleId index는 0부터 시작하기 때문에 id값에(1부터시작) -1 해준다 
    */
   getSelectedSchedule(scheduleId: number) {
-    const selecteSchedule = this.schedules$.getValue()[scheduleId - 1]
-    if (!selecteSchedule) {
-      console.error(`${scheduleId} 못찾았어`)
-    }
-    return selecteSchedule;
+    return this.schedules$.getValue().find(schedule => schedule.id === scheduleId)
   }
 
   /**
    * next([])
    */
   addSchedule(schedule: AddSchedule) {
-    const newSchedule = {
+    const newSchedule: Schedule = {
       ...schedule,
       createDate: 'yyyy-mm-dd',
-      createtime: 'yyyy-mm-dd',
+      createTime: 'yyyy-mm-dd',
       id: this.schedules$.value.length + 1
     };
 
@@ -73,23 +69,20 @@ export class ScheduleService {
       ...this.schedules$.value,
       newSchedule
     ]);
-
-    console.log(newSchedule)
   }
 
-  updateSchedule(id: number, schedule: Partial<Omit<Schedule, 'id'>>) {
-    const findScheduleIndex = this.schedules$.value.findIndex(s => s.id === id);
+  updateSchedule(scheduleId: number, schedule: Partial<Omit<Schedule, 'id'>>) {
+    const scheduleIndex = this.schedules$.value.findIndex(schedule => schedule.id === scheduleId);
 
-    if (findScheduleIndex !== -1) {
+    if (scheduleIndex !== -1) {
       const updatedSchedule = {
-        ...this.schedules$.value[findScheduleIndex],
-        ...schedule,
-        createDate: this.schedules$.value[findScheduleIndex].createDate,
-        createtime: this.schedules$.value[findScheduleIndex].createtime
+        ...this.schedules$.getValue()[scheduleIndex],
+        ...schedule
       };
 
-      this.schedules$.value[findScheduleIndex] = updatedSchedule;
-      this.schedules$.next(this.schedules$.value);
+      const schedules = this.schedules$.getValue();
+      schedules.splice(scheduleIndex, 1, updatedSchedule);
+      this.schedules$.next(schedules);
     }
   }
 }
