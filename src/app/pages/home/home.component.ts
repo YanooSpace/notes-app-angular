@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet, RouterLinkWithHref,  } from '@angular/router';
+import { RouterOutlet, RouterLinkWithHref } from '@angular/router';
 import { ListComponent } from "../list/list.component";
 import { WriteComponent } from './write/write.component';
 import { BackgroundComponent } from 'src/app/components/background/background.component';
